@@ -1,4 +1,8 @@
-package day10;
+package day11;
+
+import java.util.Random;
+
+import util.MyUtil;
 
 public class DepartEx {
 
@@ -11,6 +15,48 @@ public class DepartEx {
 		d[2] = new Department("USA점");
 		d[3] = new Department("일본점");
 		d[4] = new Department("속리산점");
+		
+		d[0].setOpenInd(true);
+		Department.setPranOpenInd(true);
+		
+		Random rd = new Random();
+		for(int i=0; i<d.length; i++) {
+			if(rd.nextInt(2) == 1)
+				d[i].setOpenInd(true);
+			else
+				d[i].setOpenInd(false);
+		}
+		
+		MyUtil.p("지점 오픈 상태 체크 결과");
+		for(int i=0; i<d.length; i++) {
+			MyUtil.p("[" + d[i].name + "] " + (d[i].getOpenStatus()? "열었어":"닫았어"));
+		}
+		
+		// 1억 이하의 임의의 금액을 얻은 후 1000단위 이하를 절사하여 amt에 추가
+		for(int i=0; i<10; i++) {
+			for(int j=0; j<d.length; j++) {
+				int todayAmt = rd.nextInt(100000001) / 1000 * 1000;
+				d[j].addAmt(todayAmt);
+			}
+		}
+		
+		for(Department dd : d) {
+			MyUtil.p(dd.name + " : " + dd.getAmt());
+		}
+		
+		// 가장 매출이 높은 지점은?
+		String topName = null;
+		int topAmt = 0;
+		
+		for(Department dd : d) {
+			if(dd.getAmt() > topAmt) {
+				topName = dd.name;
+				topAmt = dd.getAmt();
+			}
+		}
+		
+		MyUtil.cp("최대 매출 지점");
+		MyUtil.p(MyUtil.RED + MyUtil.BOLD + topName + " : " + topAmt + MyUtil.END);
 	}
 
 }
