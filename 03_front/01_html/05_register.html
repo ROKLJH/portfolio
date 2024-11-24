@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>강제회원가입</title>
+</head>
+<body>
+    <h1>강제 가입을 환영합니다.</h1>
+    <form action="05_register_ok.html" method="get">
+        <p>
+            아이디&nbsp;&nbsp;
+            <input type="text" size="50" maxlength="12" 
+                   placeholder="id를 입력하시오" 
+                   name="id">
+        </p>
+        <p>
+            비밀번호
+            <input type="password" size="50" name="pw">
+        </p>
+        <p>
+            <fieldset>
+                <legend>Gender</legend>
+                <label>Man<input type="radio" name="gender" value="M"></label>
+                <label>Woman<input type="radio" name="gender" value="W"></label>
+            </fieldset>
+            <fieldset>
+                <legend>Hobby</legend>
+                <label>Drive<input type="checkbox" name="hobby1" value="D"></label>
+                <lable>Movie<input type="checkbox" name="hobby2" value="M"></label>
+            </fieldset>
+            <hr>
+            왜 가입하게 되셨습니까??
+            <select name="reason">
+                <option value="01">강제로</option>
+                <option value="02">반강제로</option>
+                <option value="03">하래서</option>
+            </select>
+            <hr>
+            Satisfaction(상,중,하)
+            <input type="range" name="satis" value="1" min="1" max="3"><br>
+            Transfortation(교통기관)
+            <input type="text" name="trans" list="trans">
+            <!-- datalist : 사용자가 특별한 글자를 입력하면 지정된 목록을 보여줌 -->
+            <datalist id="trans">
+                <option value="bus" label="버스타고다니냐고"></option>
+                <option value="metro"></option>
+                <option value="taxi"></option>
+            </datalist>
+            <hr>
+
+            <input type="hidden" name="darkhorse" value="white">
+            <input type="hidden" name="grade" value="hobak">
+
+            <input type="submit" value="Complete"><br>
+            <input type="reset" value="한번누르면다시는안누를걸"><br>
+            <button>나는 누르면 어떻게 되나요</button><br>
+            <input type="button" value="누르지마1" onclick="sendIt(1);"><br>
+            <input type="button" value="누르지마2" onclick="sendIt('야')"><br>
+        </p>
+    </form>
+</body>
+<script>
+    function sendIt(typ, opt){
+        // alert("누르지 말라니까 왜 눌러");
+        console.log("누르지말라니까 눌렀네요 : " + typ);
+        console.log("입력안한 것을 출력하고자 하면 : " + opt);
+    }
+</script>
+</html>

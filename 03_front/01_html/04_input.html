@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <title>inputs</title>
+</head>
+<body>
+    <!-- 텍스트 입력 -->
+    <h3>사용자 정보 입력</h3>
+    이름 : <input type="text" value="이름없음"><br>
+    계정 : <input type="text" placeholder="여기에 아이디 넣어"><br>
+    <label>암호 :</label> <input type="password"><br>
+    <label>암호확인 :</label> <input type="password"><br>
+    <hr>
+
+    <!-- radio 버튼 -->
+    <h3>저녁 메뉴를 고르시오</h3>
+    <label>스파게티<input type="radio" name="dinner"></label>
+    <label>빠에야<input type="radio" name="dinner" checked></label>
+    <label>짜파구리<input type="radio" name="dinner"></label>
+    <hr>
+
+    <!-- checkbox -->
+    <h3>관심은 없지만 당신의 취미는 무엇인가요?</h3>
+    <label>독서<input type="checkbox" checked></label>
+    <label>요리<input type="checkbox"></label>
+    <label>수영<input type="checkbox"></label>
+    <hr>
+
+    <!-- file, color -->
+    <h3>극비문서 파일 업로드</h3>
+    <input type="file">
+    <input type="color">
+    <hr>
+
+    <!-- number -->
+    <h3>한 번 짝수 입력을 해보십시오.</h3>
+    <input type="number" 
+           value="1" 
+           min="1" 
+           max="100" 
+           step="2">
+    <hr>
+
+    <!-- button -->
+    <h3>제출하면 돌이킬 수 없을 겁니다.</h3>
+    <button>반도체기술유출</button><br>
+    <input type="button" value="반도체기술유출"><br>
+    <input type="submit" value="반도체기술유출진짜">
+    <hr>
+
+    <!-- select box -->
+    <h3>저녁 디저트를 고르시오</h3>
+    <select>
+        <option>사과</option>
+        <option>딸기</option>
+        <option selected>멜론</option>
+        <option>수박</option>
+    </select>
+    <hr>
+
+    <!-- textarea -->
+    <!-- 여러 줄의 대량 텍스트 입력을 받기 위한 영역 -->
+    <!-- get으로 데이터를 전달하면 위험함 -->
+    <h3>선생님께 하고 싶은 말을 적으시오(욕 가능)</h3>
+    <textarea cols="100" rows="10"></textarea>
+    <hr>
+
+    <!-- progress bar -->    
+    <h3>내 영화 손익분기점 달성율</h3>
+    <progress value="50" max="100"></progress><br>
+    <input type="range" min="0" max="100">
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
