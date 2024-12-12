@@ -1,0 +1,16 @@
+package com.koreait.board.bean;
+
+import org.springframework.stereotype.Component;
+
+import lombok.Data;
+
+@Component
+@Data
+public class ClassRoom {
+	private int no;
+	private Desk desk1;
+	private Desk desk2;
+	private Chair chair1;
+	private Chair chair2;
+	
+}

@@ -1,0 +1,11 @@
+package com.koreait.board.bean;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class DependencyTest {
+	
+	public void testDependency() {
+		log.info("Test Start");
+	}
+}

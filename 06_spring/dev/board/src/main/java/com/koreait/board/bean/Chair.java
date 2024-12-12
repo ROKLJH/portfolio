@@ -1,0 +1,21 @@
+package com.koreait.board.bean;
+
+import org.springframework.stereotype.Component;
+
+import lombok.Data;
+
+@Component
+@Data
+public class Chair {
+	private String name;
+	private int numOfLegs;
+	
+	public Chair() {
+		this.name = "Tom Sawyer";
+		this.numOfLegs = 4; 
+	}
+	
+	public String getMyHouse() {
+		return "집 없어";
+	}
+}

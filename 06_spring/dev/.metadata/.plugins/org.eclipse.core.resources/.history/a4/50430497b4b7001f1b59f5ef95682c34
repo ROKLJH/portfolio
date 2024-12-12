@@ -1,0 +1,32 @@
+package com.koreait.board.bean;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.koreait.board.util.MyUtil;
+
+import lombok.extern.slf4j.Slf4j;
+
+@SpringBootTest
+@Slf4j
+public class DependencyTest {
+	
+	@BeforeAll
+	public void init() {
+		log.info("Init for Test");
+	}
+	
+	@BeforeEach
+	public void init2() {
+		log.info("Init2 for Test");
+	}
+	
+	@Test
+	public void testDependency() {
+		log.info(MyUtil.BLUE + MyUtil.BOLD + "Test Start" + MyUtil.END);
+	}
+	
+	public void testDummy() {
+		log.info("Dummy Test");
+	}
+}
