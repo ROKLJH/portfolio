@@ -1,0 +1,28 @@
+package com.koreait.board.mybatis;
+
+import java.sql.Connection;
+
+import javax.sql.DataSource;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import lombok.extern.slf4j.Slf4j;
+
+@SpringBootTest
+@Slf4j
+public class MyBatisConfigTest {
+	
+	@Autowired
+	private DataSource dataSource;
+	
+	@Test
+	public void testDataSource() {
+		try {
+			Connection conn = dataSource.getConnection();
+			log.info("Data Source Connection : " + conn);
+		}
+		catch(Exception e) { e.printStackTrace(); }
+	}
+}

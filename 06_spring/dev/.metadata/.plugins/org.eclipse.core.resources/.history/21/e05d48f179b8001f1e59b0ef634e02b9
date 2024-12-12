@@ -1,0 +1,5 @@
+package com.koreait.board.mybatis;
+
+public class MyBatisConfig {
+
+}

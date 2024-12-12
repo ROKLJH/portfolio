@@ -1,0 +1,6 @@
+package com.koreait.board.mapper;
+
+@Mapper  // MyBatis 연결
+public interface TimeMapper {
+
+}

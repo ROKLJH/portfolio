@@ -1,0 +1,17 @@
+package com.koreait.board.mybatis;
+
+import javax.sql.DataSource;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class MyBatisConfigTest {
+	
+	@Autowired
+	private DataSource dataSource;
+	
+	@Test
+	public void testDataSource() {
+		
+	}
+}
