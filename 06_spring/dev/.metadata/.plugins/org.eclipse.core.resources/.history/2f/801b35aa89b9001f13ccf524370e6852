@@ -1,0 +1,32 @@
+package com.koreait.board.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.koreait.board.util.MyUtil;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@Slf4j
+@RequestMapping("/ex/*")  // loaclhost:8088/ex는 제껍니다.
+public class ExampleController {
+	
+	@GetMapping("")
+	public void nothing() {
+		log.info("Nothing Method is called");
+	}
+	
+	@GetMapping("sports")
+	public void getSports() {
+	// Controller에서 void는 메서드가 종료되면 자동으로 Mapping keyword로 이동한다.
+	// void getSprots()는 template/ex/sports.html을 찾고 있음
+		log.info(MyUtil.BLUE + "My favorite sports is the golf." + MyUtil.END);
+	}
+	
+	@GetMapping("music")
+	public void getMusic() {
+		log.info(MyUtil.BOLD + "My favorite muisc is the classical music" + MyUtil.END);
+	}
+}
