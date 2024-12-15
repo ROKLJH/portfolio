@@ -1,7 +1,0 @@
-package com.koreait.board.mapper;
-
-@SpringBootTest
-@Slf4j
-public class TimeMapperTest {
-
-}
