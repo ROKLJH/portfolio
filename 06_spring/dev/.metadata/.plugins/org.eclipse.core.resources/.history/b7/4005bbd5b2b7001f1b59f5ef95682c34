@@ -1,9 +1,0 @@
-package com.koreait.board.bean;
-
-@Slf4j
-public class DependencyTest {
-	
-	public void testDependency() {
-		
-	}
-}
