@@ -11,21 +11,21 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootTest
 @Slf4j
 public class TimeMapperTest {
-	
+
 	@Autowired
 	private TimeMapper mapper;
 	
 	@Test
 	public void testGetTime1() {
-		log.info("------------------------------");
+		log.info("-----------------------------------");
 		log.info("Current Time 1 : " + MyUtil.BOLD + mapper.getTime1() + MyUtil.END);
-		log.info("------------------------------");
+		log.info("-----------------------------------");
 	}
 	
 	@Test
 	public void testGetTime2() {
-		log.info("------------------------------");
+		log.info("-----------------------------------");
 		log.info("Current Time 2 : " + MyUtil.BOLD + mapper.getTime2() + MyUtil.END);
-		log.info("------------------------------");
+		log.info("-----------------------------------");
 	}
 }

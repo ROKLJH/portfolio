@@ -12,10 +12,6 @@ public class Chair {
 	
 	public Chair() {
 		this.name = "Tom Sawyer";
-		this.numOfLegs = 4; 
-	}
-	
-	public String getMyHouse() {
-		return "집 없어";
+		this.numOfLegs = 4;
 	}
 }
