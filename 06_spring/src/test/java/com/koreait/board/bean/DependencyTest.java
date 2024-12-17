@@ -16,17 +16,17 @@ public class DependencyTest {
 	
 	@Autowired
 	public ClassRoom cr;
-	
-	@BeforeAll	// 모든 테스트 수행 전 한 번 수행할 일
+
+	@BeforeAll  // 모든 테스트 수행 전 한 번 수행할 일
 	public static void init() {
 		log.info("Init for Test");
 	}
 	
-	@BeforeEach	// 모든 테스트 메서드마다 수행 전
+	@BeforeEach  // 모든 테스트 메서드마다 수행 전
 	public void init2() {
 		log.info("Init2 for Test");
 	}
-	
+		
 	@Test
 	public void testDependency() {
 		log.info(MyUtil.BLUE + MyUtil.BOLD + "Test Start" + MyUtil.END);

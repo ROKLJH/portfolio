@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>시험결과</title>
+</head>
+<body>
+	<h1>시험결과</h1>
+	<hr>
+	<h2 th:text="${kor}"></h2>
+	<h2 th:text="${math}"></h2>
+	<h2 th:text="${eng}"></h2>
+	<h2>국어 : [[${kor}]]</h2>	
+	<h2>수학 : [[${math}]]</h2>	
+	<h2>영어 : [[${eng}]]</h2>	
+</body>
+</html>

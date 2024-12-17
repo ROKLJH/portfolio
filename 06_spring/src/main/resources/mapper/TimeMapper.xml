@@ -3,6 +3,6 @@
 <!-- 연결할 인터페이스 정보를 namespace에 기술 -->
 <mapper namespace="com.koreait.board.mapper.TimeMapper">
 	<select id="getTime2" resultType="string">
-		SELECT SYSDATE() FROM DUAL
+		SELECT 'PRETTY SUMMER' FROM DUAL
 	</select>
 </mapper>
