@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/ex/*")  // localhost:10000/ex는 제껍니다
+@RequestMapping("/ex/*")  // localhost:8088/ex는 제껍니다
 public class ExampleController2 {
 	
 }

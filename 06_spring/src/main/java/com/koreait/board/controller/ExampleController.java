@@ -1,5 +1,6 @@
 package com.koreait.board.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.koreait.board.bean.ArtVO;
+import com.koreait.board.bean.SubjectVO;
+import com.koreait.board.dao.TimeDAO;
 import com.koreait.board.util.MyUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,8 +19,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/ex/*")  // localhost:10000/ex는 제껍니다
+@RequestMapping("/ex/*")  // localhost:8088/ex는 제껍니다
 public class ExampleController {
+	
+	@Autowired
+	//private TimeMapper mapper;
+	private TimeDAO timeDAO;
 	
 	@GetMapping("")
 	public void nothing() {
@@ -46,7 +53,7 @@ public class ExampleController {
 	}
 	
 	// classic way
-	// http://localhost:10000/ex/classic?title=nocturne&artist=Chopin
+	// http://localhost:8088/ex/classic?title=nocturne&artist=Chopin
 	@GetMapping("classic")
 	public String classicTest(HttpServletRequest req) {
 		String title = req.getParameter("title");
@@ -56,7 +63,7 @@ public class ExampleController {
 	}
 
 	// spring way I
-	// http://localhost:10000/ex/modern?title=nocturne&artist=Chopin
+	// http://localhost:8088/ex/modern?title=nocturne&artist=Chopin
 	@GetMapping("modern")
 	public String modern(String title, String artist) {
 		log.info("modern : " + title + "(" + artist + ")");
@@ -64,7 +71,7 @@ public class ExampleController {
 	}
 	
 	// spring way II
-	// http://localhost:10000/ex/future?title=nocturne&artist=Chopin
+	// http://localhost:8088/ex/future?title=nocturne&artist=Chopin
 	@GetMapping("future")
 	public String future(ArtVO artVO, String title) {
 		log.info("future : " + artVO);
@@ -72,7 +79,7 @@ public class ExampleController {
 		return "index";
 	}
 	
-	// http://localhost:10000/ex/play?t=nocturne&a=Bach
+	// http://localhost:8088/ex/play?t=nocturne&a=Bach
 	@GetMapping("play")
 	public String play(@RequestParam("t") String title, 
 			           @RequestParam("a") String artist) {
@@ -87,14 +94,23 @@ public class ExampleController {
 		vo.setDesc(desc);
 	}
 	
+	@GetMapping("subject")  // void인 경우 /ex/subject.html으로 자동 이동 
+	public void subject() { 
+		log.info("----------------------------------  subject called");
+	}
+	
 	@GetMapping("subjectVO")
-	public String subjectVO(Model model) {
+	public String subjectVO(Model model, SubjectVO vo) {
 		// Model을 이용하여 kor 10점, math 20점, eng 40점을 subjectVO.html로 전달하시오.
 		// subjectVO.html에서는 kor, math, eng 점수를 받아서 출력하시오.
 		// html에서 과목 점수 합계와 평균을 출력하시오.
-		model.addAttribute("kor", 10);
-		model.addAttribute("math", 20);
-		model.addAttribute("eng", 40);
+//		model.addAttribute("kor", kor);
+//		model.addAttribute("math", math);
+//		model.addAttribute("eng", eng);
+//		model.addAttribute("sum", kor+math+eng);
+//		model.addAttribute("avg", (kor+math+eng)/3F);
+		model.addAttribute("tm", timeDAO.getTime());
+		model.addAttribute("vo", vo);
 		
 		return "/ex/subjectVO";
 	}
