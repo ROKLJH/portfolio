@@ -1,0 +1,59 @@
+버전 관리 시스템
+	원하는 시점(버전)으로 이동할 수 있으며, 각 버전별로 여러 개발자가 협업할 수 있는
+	최적의 환경을 제공하는 시스템.
+
+SVN
+	작업 내역 커밋 시 변경사항과 히스토리가 즉시 서버로 전송되기 때문에 관리가 용이하다.
+	또한 간단한 설치와 사용방법으로 별도의 교육 없이도 초보자가 쉽게 사용할 수 있다.
+	하지만 항상 원격 저장소를 필요로 하며 서버 간 버전 관리가 힘들다.
+
+Git
+	SVN이 가지고 있던 클라이언트와 서버 간의 버전 관리 문제를 많이 보완해준 시스템.
+	서버 뿐만 아니라 로컬에서도 버전 관리가 가능하며, 로컬이 서버가 될 수 있고,
+	서버도 로컬이 될 수 있다. 브랜치라는 개념을 사용하여 개발자 마음대로
+	로컬 환경에서도 커밋과 버전 관리가 가능하다.
+
+Git-Hub
+	Git으로 관리하는 프로젝트를 호스팅하는 사이트 중 하나이다.
+	로컬 저장소에서 작업하던 버전들을 다른 클라이언트와 공유하기 위한 서버이다.
+
+	.<<은 모든경로를 의미
+	git status << 현재상태
+	git rm --cached 파일 << 스테이지에서 내리기
+	git checkout - << 최신으로이동
+
+로컬 버전 관리 흐름
+	git init
+<	git config --global user.email "email@gmail.com"
+	git config --global user.name "name"
+>
+	master 브랜치에서 기본 환경 세팅을 진행한다.
+	git add .			(master)				<< 버전만들기(스테이징)
+	git commit -m "init"		(master)
+	git checkout -b test		(master)
+	본격적인 작업 진행		(test)
+	git add .			(test)
+	git commit -m "test init"	(test)
+	git checkout master		(test)
+	git merge test		(master)
+	fast-forward 진행		(master, test)
+	git remote add origin [개인 저장소 경로]	(master)
+	git remote -v				(master)
+	git push origin master			(master)
+
+
+개인 저장소 흐름
+	git init
+
+	git checkout -b [작업할 브랜치명]
+	작업 진행
+	git add .
+	git commit -m "[버전 설명]"
+	git checkout master
+	git merge master
+	git remote add origin [개인 레포지토리 경로]
+	git remote -v
+	git push origin master
+	git checkout [작업할 브랜치]
+
+	git clone -b [브랜치명] [클론 받은 레포지토리 경로] .
