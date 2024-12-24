@@ -40,4 +40,13 @@ public class BoardController {
 		log.info("글 쓴댄다 : " + board);
 		log.info(dao.register(board) + "건 등록 완료");
 	}
+	
+	// read(글읽기) 처리용
+	// localhost:8088/board/read?bno=N를 호출했을 때 내용을 보여주는 페이지
+	@RequestMapping("read")
+	public void read(Long bno, Model model) {
+		log.info("------------------------------>");
+		log.info("read : bno =" + bno);
+		model.addAttribute("vo", dao.read(bno));
+	}
 }
