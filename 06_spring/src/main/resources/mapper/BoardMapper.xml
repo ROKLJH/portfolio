@@ -13,14 +13,14 @@
 		INSERT INTO TBL_BOARD(BNO, TITLE, CONTENT, WRITER)
 		VALUES(#{bno}, #{title}, #{content}, #{writer})
 	</insert>
-	<select id="getList" resultType="com.koreait.board.bean.BoardVO">
+	<select id="getList" resultType="boardVO">
 		<![CDATA[
 		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
 		FROM TBL_BOARD
 		WHERE BNO > 0
 		]]>
 	</select>
-	<select id="get" resultType="com.koreait.board.bean.BoardVO">
+	<select id="get" resultType="boardVO">
 		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
 		FROM TBL_BOARD
 		WHERE BNO = #{bno}

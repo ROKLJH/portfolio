@@ -2,6 +2,7 @@ package com.koreait.board.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,14 @@ public class BoardController {
 	
 	@Autowired
 	private BoardDAO dao;
+	
+	// List
+	@GetMapping("list")
+	public void list(Model model) {
+		log.info("-------------------------------------------------->");
+		log.info("Get List Called");
+		model.addAttribute("list", dao.getList());
+	}
 	
 	// register(글쓰기) 화면 호출용
 	@GetMapping("register")
