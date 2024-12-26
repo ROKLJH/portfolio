@@ -28,6 +28,7 @@
 	<update id="update">
 		UPDATE TBL_BOARD
 		SET TITLE = #{title}, CONTENT = #{content}, WRITER = #{writer}
+			, UPDATEDATE = SYSDATE()
 		WHERE BNO = #{bno}
 	</update>
 	<delete id="delete">
