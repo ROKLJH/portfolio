@@ -73,4 +73,26 @@ public class BoardController {
 		
 		return new RedirectView("list");
 	}
+	
+	// modify 처리용
+	// localhost:8088/board/remove?bno=N를 호출했을 때 수정페이지를 로딩하는 기능
+	@GetMapping("modify")
+	public void modify(Long bno, Model model) {
+		// bno를 가지고 BoardVO 얻어온 후 model에 태우는 과정이 필요
+		model.addAttribute("board", dao.read(bno));
+	}
+	
+	@PostMapping("modify")
+	public RedirectView modifyPost(BoardVO board, RedirectAttributes rttr) {
+		int count = dao.modify(board);
+		
+		if(count > 0) {
+			rttr.addFlashAttribute("msg", "글 " + board.getBno() + "업데이트 완료");
+		}
+		else {
+			rttr.addFlashAttribute("msg", "글 수정에 대실패하였습니다.");
+		}
+		
+		return new RedirectView("list");
+	}
 }
