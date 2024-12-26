@@ -30,4 +30,8 @@
 		SET TITLE = #{title}, CONTENT = #{content}, WRITER = #{writer}
 		WHERE BNO = #{bno}
 	</update>
+	<delete id="delete">
+		DELETE FROM TBL_BOARD
+		WHERE BNO = #{bno}
+	</delete>
 </mapper>

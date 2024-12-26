@@ -34,7 +34,7 @@
 				<th:block th:each="board:${list}">
 					<tr th:object="${board}">
 						<td th:text="*{bno}" class="hide"></td>
-						<td th:text="*{title}"></td>
+						<td><a th:text="*{title}" th:href="@{/board/read(bno=*{bno})}"></a></td>
 						<td th:text="*{writer}"></td>
 						<td th:text="*{regdate}"></td>
 						<td th:text="*{updatedate}" class="hide"></td>
@@ -44,7 +44,7 @@
 		</table>
 	</div>
 </body>
-<script>
+<script th:inline="javascript">
 	var btn = document.getElementById("write");
 	var btn2 = document.querySelector("span.btn");
 	btn.addEventListener("click", function() {
@@ -53,5 +53,10 @@
 	btn2.addEventListener("click", function() {
 		location.href = "/board/register"
 	});
+	
+	var msg = [[${msg}]];
+	if(msg){
+		alert(msg);
+	}
 </script>
 </html>

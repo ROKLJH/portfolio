@@ -32,4 +32,9 @@ public class BoardDAO {
 	public int modify(BoardVO board) {
 		return mapper.update(board);
 	}
+	
+	// remove
+	public int remove(Long bno) {
+		return mapper.delete(bno);
+	}
 }

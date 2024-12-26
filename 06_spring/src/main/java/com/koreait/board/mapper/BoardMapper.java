@@ -20,4 +20,7 @@ public interface BoardMapper {
 	
 	// 게시글 업데이트
 	public int update(BoardVO vo);
+	
+	// 게시글 삭제
+	public int delete(Long bno);
 }
