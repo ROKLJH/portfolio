@@ -13,9 +13,12 @@ public class BoardDAO {
 	@Autowired
 	private BoardMapper mapper;
 	
-	//getList
-	public List<BoardVO> getList() {
+	// getList
+	public List<BoardVO> getList(){
 		return mapper.getList();
+	}
+	public List<BoardVO> getListWithKey(String type, String keyword){
+		return mapper.getListWithKey(type, keyword);
 	}
 	
 	// register

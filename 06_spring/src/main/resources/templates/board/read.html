@@ -23,11 +23,11 @@
 		</table>
 		<input type="hidden" name="bno" th:field="${vo.bno}">
 		<button>삭제하기</button>
-		<input type="button" onclick="goUpdate()" value="수정하기">
+		<input type="button" onclick="goUpdate()" value="수정하기"> 
 	</form>
 </body>
 <script th:inline="javascript">
-	function goUpdate() {
+	function goUpdate(){
 		let bno = [[${vo.bno}]];
 		location.href = "/board/modify?bno=" + bno;
 	}
