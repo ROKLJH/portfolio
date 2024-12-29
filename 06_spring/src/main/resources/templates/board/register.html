@@ -11,7 +11,85 @@
 		<p>title : <input type="text" name="title"></p>
 		<p>content : <br><textarea name="content"></textarea></p>
 		<p>writer : <input type="text" name="writer"></p>
-		<input type="submit" value="Register"> 
+		
+		<div class="uploadDiv">
+			<input type="file" name="uploadFile" multiple style="width: 200px;">
+		</div>
+		<div class="uploadResult">
+			<ul>
+				<li>File1</li>
+				<li>File2</li>
+			</ul>
+		</div>		
+		<input type="submit" value="Register">
 	</form>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+	$("input[type='file']").change(function(e){
+		// e.preventDefault();  // ex) a 태그의 경우 이동안함, submit의 경우 제출안함
+		// alert("Change");
+		let inputFile = $("input[name='uploadFile']");
+		let files = inputFile[0].files;
+		console.log(files);
+		
+		// FormData를 이용하여 전송 데이터 생성
+		let formData = new FormData();
+		
+		for(let i=0; i<files.length; i++){
+			if(checkFile(files[i].name, files[i].size) == false){
+				alert("파일 업로드 실패");
+				return;
+			}
+			
+			// formData에 추가한다.
+			formData.append("uploadFile", files[i]);
+			// alert("파일 추가 완료");
+		}
+		
+		console.log(formData);
+		
+		$.ajax({
+			url: "/upload/uploadAjaxAction",
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: "POST",
+			success: function(result){
+				alert("File Upload Completed");
+				console.log(result);
+			},
+			error: function(error){
+				console.log("야 오류났어");
+				console.log(error);
+			}
+		});
+		
+	});
+
+	// 파일 체크 : true(업로드 가능), false(업로드 불가능)
+	function checkFile(fileName, fileSize){
+		// File Size Limit
+		let MAXSIZE = 5000000;
+		
+		if(fileSize > MAXSIZE){
+			alert("파일 사이즈가 왜 이렇게 큰가요");
+			return false;
+		}
+		
+		// File Extension Check
+		let RULE = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+		if(RULE.test(fileName)){
+			alert("이런 파일 올리시면 혼납니다.")
+			return false;
+		}
+		
+		return true;
+	}
+</script>
+
+
+
+
+
 </html>
