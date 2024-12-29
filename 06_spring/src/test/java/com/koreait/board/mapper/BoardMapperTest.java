@@ -23,8 +23,8 @@ public class BoardMapperTest {
 		vo.setWriter("테스터");
 		log.info("BoardVO = " + vo);
 		
-		// if(mapper.insert(vo) == 1) {
-		if(mapper.insertSelectKey(vo) == 1) {
+		//if(mapper.insert(vo) == 1) {
+		if(mapper.insertSelectKey(vo) == 1) {		
 			log.info(MyUtil.BLUE + "Insert 성공하셨습니다." + MyUtil.END);
 		}
 		else {
@@ -44,8 +44,10 @@ public class BoardMapperTest {
 	
 	@Test
 	public void testGetList() {
+		
+		// Lambda 문법
 		mapper.getList()
-		.forEach(board -> log.info(board.toString()));
+		      .forEach(board -> log.info(board.toString()));
 	}
 	
 	@Test
@@ -57,13 +59,12 @@ public class BoardMapperTest {
 	
 	@Test
 	public void testUpdate() {
+		log.info("Test Update");
 		BoardVO board = new BoardVO();
 		board.setBno(11L);
 		board.setTitle("수정한 제목");
 		board.setContent("절대 읽으시면 안됩니다.");
 		board.setWriter("지은이 아닌데 수정되나요");
 		mapper.update(board);
-		
 	}
-	
 }

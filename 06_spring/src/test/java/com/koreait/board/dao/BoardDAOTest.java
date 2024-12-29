@@ -15,7 +15,7 @@ public class BoardDAOTest {
 	@Autowired
 	private BoardDAO dao;
 	
-	@Test
+	//@Test
 	public void testRegister() {
 		BoardVO board = new BoardVO();
 		board.setTitle("DAO Test");
@@ -25,18 +25,24 @@ public class BoardDAOTest {
 		log.info("" + board);
 	}
 	
-	@Test
+	//@Test
 	public void testGetList() {
 		dao.getList()
-			.forEach(board -> log.info(MyUtil.BLUE + board + MyUtil.END));
+		   .forEach(board -> log.info(MyUtil.BLUE + board + MyUtil.END));
 	}
 	
 	@Test
+	public void testGetListWithKey() {
+		dao.getListWithKey("T", "2")
+		   .forEach(board -> log.info(MyUtil.BLUE + board + MyUtil.END));
+	}
+	
+	//@Test
 	public void testRead() {
 		log.info("" + dao.read(11L));
 	}
 	
-	@Test
+	//@Test
 	public void testModify() {
 		BoardVO vo = new BoardVO();
 		vo.setBno(12L);

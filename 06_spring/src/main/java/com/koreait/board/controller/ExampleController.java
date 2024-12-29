@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/ex/*")  // localhost:8088/ex는 제껍니다
+@RequestMapping("/ex/*")  // localhost:10000/ex는 제껍니다
 public class ExampleController {
 	
 	@Autowired
@@ -53,7 +53,7 @@ public class ExampleController {
 	}
 	
 	// classic way
-	// http://localhost:8088/ex/classic?title=nocturne&artist=Chopin
+	// http://localhost:10000/ex/classic?title=nocturne&artist=Chopin
 	@GetMapping("classic")
 	public String classicTest(HttpServletRequest req) {
 		String title = req.getParameter("title");
@@ -63,7 +63,7 @@ public class ExampleController {
 	}
 
 	// spring way I
-	// http://localhost:8088/ex/modern?title=nocturne&artist=Chopin
+	// http://localhost:10000/ex/modern?title=nocturne&artist=Chopin
 	@GetMapping("modern")
 	public String modern(String title, String artist) {
 		log.info("modern : " + title + "(" + artist + ")");
@@ -71,7 +71,7 @@ public class ExampleController {
 	}
 	
 	// spring way II
-	// http://localhost:8088/ex/future?title=nocturne&artist=Chopin
+	// http://localhost:10000/ex/future?title=nocturne&artist=Chopin
 	@GetMapping("future")
 	public String future(ArtVO artVO, String title) {
 		log.info("future : " + artVO);
@@ -79,7 +79,7 @@ public class ExampleController {
 		return "index";
 	}
 	
-	// http://localhost:8088/ex/play?t=nocturne&a=Bach
+	// http://localhost:10000/ex/play?t=nocturne&a=Bach
 	@GetMapping("play")
 	public String play(@RequestParam("t") String title, 
 			           @RequestParam("a") String artist) {
