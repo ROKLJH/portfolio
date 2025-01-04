@@ -21,11 +21,16 @@
 			<tr><td>등록</td><td th:text="${vo.regdate}"></td></tr>
 			<tr><td>수정</td><td th:text="${vo.updatedate}"></td></tr>	
 		</table>
+		<div class="uploadResult">
+			<h3>첨부파일</h3>
+			<ul></ul>
+		</div>
 		<input type="hidden" name="bno" th:field="${vo.bno}">
 		<button>삭제하기</button>
 		<input type="button" onclick="goUpdate()" value="수정하기"> 
 	</form>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script th:inline="javascript">
 	function goUpdate(){
 		let bno = [[${vo.bno}]];
@@ -35,5 +40,20 @@
 	var title = [[${vo.bno}]];
 	console.log(title);
 	// alert(title);
+	
+	let bnoValue = [[${vo.bno}]];
+	let ul = $(".uploadResult ul");
+	
+	$.getJSON("/board/getAttachList", { bno: bnoValue }, function(arr){
+		console.log(arr);
+		str = "";
+		
+		$(arr).each(function(i, attach) {
+			newName = attach.fileName.substring(attach.fileName.indexOf("_")+1);
+			str += "<li>" + newName + "</li>";
+		});
+		
+		ul.html(str);
+	});
 </script>
 </html>
