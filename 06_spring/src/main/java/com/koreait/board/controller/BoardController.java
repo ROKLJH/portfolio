@@ -1,14 +1,19 @@
 package com.koreait.board.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.koreait.board.bean.AttachFileVO;
 import com.koreait.board.bean.BoardVO;
 import com.koreait.board.dao.BoardDAO;
 
@@ -98,5 +103,12 @@ public class BoardController {
 			rttr.addFlashAttribute("msg", "글 수정에 대실패하였습니다.");
 		
 		return new RedirectView("list");
+	}
+	
+	// 게시글 첨부파일
+	@GetMapping(value="/getAttachList", produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<AttachFileVO> getAttachList(Long bno) {
+		return dao.getAttachList(bno);
 	}
 }

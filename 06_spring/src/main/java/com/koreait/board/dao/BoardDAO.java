@@ -5,13 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.koreait.board.bean.AttachFileVO;
 import com.koreait.board.bean.BoardVO;
+import com.koreait.board.mapper.AttachFileMapper;
 import com.koreait.board.mapper.BoardMapper;
 
 @Repository
 public class BoardDAO {
 	@Autowired
 	private BoardMapper mapper;
+	
+	@Autowired
+	private AttachFileMapper fmapper;
 	
 	// getList
 	public List<BoardVO> getList(){
@@ -23,7 +28,17 @@ public class BoardDAO {
 	
 	// register
 	public int register(BoardVO board) {
-		return mapper.insertSelectKey(board);
+		int result = 0;
+		
+		result = mapper.insertSelectKey(board);
+		if(board.getAttachFile() != null) {
+			board.getAttachFile().forEach(attach -> {
+				attach.setBno(board.getBno());
+				fmapper.insert(attach);
+			});
+		}
+		
+		return result;
 	}
 	
 	// read
@@ -39,5 +54,10 @@ public class BoardDAO {
 	// remove
 	public int remove(Long bno) {
 		return mapper.delete(bno);
+	}
+	
+	// 첨부파일 읽기
+	public List<AttachFileVO> getAttachList(Long bno){
+		return fmapper.findByBno(bno);
 	}
 }

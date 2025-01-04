@@ -3,5 +3,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="boardVO" type="com.koreait.board.bean.BoardVO"></typeAlias>
+		<typeAlias alias="attachFileVO" type="com.koreait.board.bean.AttachFileVO"></typeAlias>
 	</typeAliases>
 </configuration>
