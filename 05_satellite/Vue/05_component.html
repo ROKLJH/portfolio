@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Component</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <h1>Vue.js Components</h1>
+    <hr>
+    <div id="comp">
+        <ul>
+            <todo-item
+                v-for="cook in cookList"
+                v-bind:todo="cook">
+            </todo-item>
+        </ul>
+    </div>
+</body>
+<script>
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>오늘의 할 일({{ todo.id }}) : {{ todo.food }}</li>'
+    });
+
+    var app7 = new Vue({
+        el: '#comp',
+        data: {
+            cookList: [
+                { id: 0, food: 'Ramen' },
+                { id: 1, food: 'IceCream' },
+                { id: 2, food: 'SandWitch' },
+                { id: 3, food: 'Budae' },
+                { id: 4, food: 'Wine' }
+            ]
+        }
+    })
+</script>
+</html>
