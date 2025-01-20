@@ -1,0 +1,15 @@
+Day4
+
+1. 웹 계획서
+    - 개요 페이지 작성 => 오늘까지 제출
+    - Figma를 활용한 웹 페이지 (흐름)
+      https://designer-stpry.tistory.com/12
+
+
+2. 데이터베이스 설계
+    - 우리 사이트가 담아야 할 데이터 리스트
+    - web 검색 : free ERD tool
+      -> 어느 툴이 우수하다? 이미지로 검색
+
+3. Optional Low Coding, No Coding
+    - webflow
