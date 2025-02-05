@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>글쓰기</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+<h1 class="text-center">새 글 작성</h1>
+<hr>
+<!-- 컨트롤러에서 "board" 모델 속성이 추가되어야 함 -->
+<form action="/board/register" method="post" th:object="${board}">
+  <div class="form-group">
+    <label>제목:</label>
+    <!-- BoardVO의 제목 필드와 바인딩 (XML에서는 BoardName으로 매핑되도록 별칭 처리) -->
+    <input type="text" th:field="*{title}" class="form-control" placeholder="제목 입력">
+  </div>
+  <div class="form-group">
+    <label>내용:</label>
+    <textarea th:field="*{content}" class="form-control" placeholder="내용 입력"></textarea>
+  </div>
+  -->
+  <!-- 작성자 필드는 세션에서 강제 설정되므로 폼에는 노출하지 않음 -->
+  <div class="form-group" style="margin-top: 20px;">
+    <input type="submit" value="등록" class="btn btn-primary">
+  </div>
+</form>
+</body>
+</html>
