@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>글 수정</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <style>
+    input[readonly] {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>글 수정</h1>
+  <form action="/board/modify" method="post" th:object="${board}">
+    <input type="hidden" th:field="*{bno}" />
+    <div class="form-group">
+      <label>제목:</label>
+      <input type="text" th:field="*{title}" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>내용:</label>
+      <textarea th:field="*{content}" class="form-control"></textarea>
+    </div>
+    <!-- 작성자 정보는 읽기 전용으로 표시 -->
+    <div class="form-group">
+      <label>작성자:</label>
+      <input type="text" th:value="${board.writer}" class="form-control" readonly>
+    </div>
+    <div class="form-group" style="margin-top: 20px;">
+      <input type="submit" value="수정 완료" class="btn btn-primary">
+    </div>
+  </form>
+</div>
+</body>
+</html>
