@@ -1,0 +1,72 @@
+<!-- templates/sidebar.html -->
+<!-- 사이드바 프래그먼트 정의 -->
+<div th:fragment="sidebarFragment">
+    <!-- 왼쪽 사이드바 영역 -->
+    <div class="leftSideBarOpen">
+        <!-- 사용자 프로필 이미지 영역 -->
+        <div class="userProfile">
+            <!--
+              * th:src 사용: 세션에 로그인한 회원이 있다면 그 회원의 프로필 경로(session.loginUser.profile)를 사용하고,
+                없으면 기본 이미지 URL을 사용합니다.
+              * alt 속성은 이미지가 로드되지 않을 경우 대체 텍스트로 표시됩니다.
+            -->
+            <img th:src="${session.loginUser != null and session.loginUser.profile != null ? session.loginUser.profile : '/img/default_profile.png'}"
+                 th:alt="${session.loginUser != null ? session.loginUser.name : 'userProfile'}"
+                 width="30" height="30">
+        </div>
+
+        <!-- 사용자 이름 영역 -->
+        <div class="userName">
+            <!--
+              * th:text 사용: 로그인한 회원이 있다면 그 회원의 이름(session.loginUser.name)을 표시합니다.
+                없으면 '회원이름'이라는 기본 텍스트를 표시합니다.
+            -->
+            <h6 th:text="${session.loginUser != null ? session.loginUser.name : '회원이름'}"></h6>
+        </div>
+
+        <!-- 왼쪽 사이드바 닫기 버튼 -->
+        <div class="buttonLeft">
+            <input type="button" value="<<" onclick="leftSideBarClose()" name="leftSidebarClose"/>
+        </div>
+
+        <!-- 메인 메뉴 영역 -->
+        <div class="mainMenu">
+            <p>검색</p>
+            <p>홈</p>
+        </div>
+
+        <!-- 사용자 메뉴 영역 -->
+        <div class="userMenu">
+            <p>캘린더</p>
+            <!-- "메모" 메뉴에 링크 추가: 클릭 시 게시판 목록 페이지(/board/list)로 이동 -->
+            <p><a th:href="@{/board/list}" style="text-decoration:none; color:inherit;">메모</a></p>
+            <p>가계부</p>
+        </div>
+
+        <!-- 사용자 설정 메뉴 영역 -->
+        <div class="userSettings">
+            <p><a th:href="@{/user/userCheck}" style="text-decoration:none; color:inherit;">정보수정</a></p>
+        </div>
+
+        <!-- 로그아웃 영역 -->
+        <div class="userLogOut">
+            <!-- 로그아웃 링크 추가: 클릭 시 /user/logout 경로로 이동 -->
+            <p><a th:href="@{/user/logout}" style="text-decoration:none; color:inherit;">로그아웃</a></p>
+        </div>
+    </div>
+    <!-- 왼쪽 사이드바가 닫혔을 때 보일 열기 버튼 -->
+    <div class="leftSidebarButton">
+        <input type="button" value=">>" onclick="leftSideBarOpen()" name="leftVisible"/>
+    </div>
+
+    <!-- 오른쪽 사이드바 영역 -->
+    <div class="rightSideBarOpen">
+        <!-- 오른쪽 사이드바 닫기 버튼 -->
+        <input type="button" value=">>" onclick="rightSideBarClose()" name="rightSidebarClose"/>
+    </div>
+
+    <!-- 오른쪽 사이드바가 닫혔을 때 보일 열기 버튼 -->
+    <div class="rightSidebarButton">
+        <input type="button" value="<<" onclick="rightSideBarOpen()" name="rightVisible"/>
+    </div>
+</div>
