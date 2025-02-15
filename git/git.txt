@@ -24,8 +24,8 @@ Git-Hub
 
 로컬 버전 관리 흐름
 	git init
-<	git config --global user.email "email@gmail.com"
-	git config --global user.name "name"
+<	git config --global user.email "eltmzm8358@gmail.com"
+	git config --global user.name "ROKLJH"
 >
 	master 브랜치에서 기본 환경 세팅을 진행한다.
 	git add .			(master)				<< 버전만들기(스테이징)
