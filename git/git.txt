@@ -22,6 +22,7 @@ Git-Hub
 	git rm --cached 파일 << 스테이지에서 내리기
 	git checkout - << 최신으로이동
 
+// 현재계정
 로컬 버전 관리 흐름
 	git init
 <	git config --global user.email "eltmzm8358@gmail.com"
