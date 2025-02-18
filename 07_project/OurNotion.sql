@@ -164,7 +164,7 @@ START WITH 1
 INCREMENT BY 1
 NOCACHE;
 
--- 트리거 생성
+-- 트리거 생성 (사용하지 않음)
 CREATE OR REPLACE TRIGGER trg_board_seq
 BEFORE INSERT ON T_Board
 FOR EACH ROW
