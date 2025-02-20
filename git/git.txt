@@ -45,7 +45,6 @@ Git-Hub
 
 개인 저장소 흐름
 	git init
-
 	git checkout -b [작업할 브랜치명]
 	작업 진행
 	git add .
