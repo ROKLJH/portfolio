@@ -56,3 +56,7 @@ Git-Hub
 	git checkout [작업할 브랜치]
 
 	git clone -b [브랜치명] [클론 받은 레포지토리 경로] .
+
+협업 공용 저장소 흐름
+	[팀장]
+	git-hub에서 organization 생성 후 레포지토리 생성
