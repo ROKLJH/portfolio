@@ -60,3 +60,10 @@ Git-Hub
 협업 공용 저장소 흐름
 	[팀장]
 	git-hub에서 organization 생성 후 레포지토리 생성
+
+	git init
+	작업 진행
+	git add .
+	git commit -m "init"
+	git remote add [공용 저장소 이름] [공용 저장소 경로]
+	git push [공용 저장소 이름] master
