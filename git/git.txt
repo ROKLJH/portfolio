@@ -67,3 +67,7 @@ Git-Hub
 	git commit -m "init"
 	git remote add [공용 저장소 이름] [공용 저장소 경로]
 	git push [공용 저장소 이름] master
+
+	[전원]
+	git-hub의 organization의 레포지토리로 이동 후 fork받기
+	fork 받은 개인 레포지토리 경로를 git에 등록
