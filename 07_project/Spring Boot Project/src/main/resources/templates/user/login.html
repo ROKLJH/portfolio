@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="icon" href="/img/doro.ico">
+    <link rel="stylesheet" th:href="@{/css/user.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+
+<body>
+<div class="container">
+    <h1>로그인</h1>
+
+    <div th:if="${msg}">
+        <p th:text="${msg}" class="red"></p>
+    </div>
+
+    <form action="/user/login" method="post">
+        <div class="form-group">
+            <label>아이디:</label>
+            <input type="text" name="id" placeholder="아이디 입력">
+        </div>
+        <div class="form-group">
+            <label>비밀번호:</label>
+            <input type="password" name="pwd" placeholder="비밀번호 입력">
+        </div>
+        <div>
+            <input type="submit" value="로그인">
+        </div>
+    </form>
+
+    <p style="text-align: center;">
+        아직 회원이 아니신가요? <a href="/user/userRegister" class="abutton">회원가입</a>
+    </p>
+
+    <h5>카카오 로그인</h5>
+    <a th:href="@{/login/page}">
+        <img src="/img/KakaoLogin.png" alt="Kakao Login" class="kakao-login-btn">
+    </a>
+</div>
+</body>
+
+</html>

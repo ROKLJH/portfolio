@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원정보 수정</title>
+    <link rel="icon" th:href="@{/img/doro.ico}">
+    <link rel="stylesheet" th:href="@{/css/user.css}">
+    <link rel="stylesheet" th:href="@{/css/userModify.css}">
+</head>
+
+<body>
+
+    <h1>회원정보 수정</h1>
+    <form id="modifyForm" action="/user/userModify" method="post" th:object="${user}" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{userSeq}">
+        <input type="hidden" id="deleteProfile" name="deleteProfile" value="false">
+
+        <div class="form-group">
+            <label>ID:</label>
+            <input type="text" th:field="*{id}" readonly>
+        </div>
+        <div class="form-group">
+            <label>비밀번호:</label>
+            <input type="password" id="modPwd" th:field="*{pwd}">
+        </div>
+        <div class="form-group">
+            <label>비밀번호 확인:</label>
+            <input type="password" id="modPwd2">
+            <div id="modPwdMatchMessage" class="message"></div>
+        </div>
+        <div class="form-group">
+            <label>이름:</label>
+            <input type="text" id="modName" th:field="*{name}">
+            <div id="modNameValidationMessage" class="message"></div>
+        </div>
+        <div class="form-group">
+            <label>생년월일 (YYYYMMDD):</label>
+            <input type="text" id="modBirth" th:field="*{birth}">
+            <div id="modBirthValidationMessage" class="message"></div>
+        </div>
+        <div class="form-group">
+            <label>휴대전화:</label>
+            <input type="text" id="modTel" th:field="*{telNum}">
+            <div id="modTelValidationMessage" class="message"></div>
+        </div>
+        <div class="form-group">
+            <label>부서번호:</label>
+            <input type="text" th:field="*{deptSeq}">
+        </div>
+        <div class="form-group">
+            <label>이메일:</label>
+            <input type="email" id="modEmail" th:field="*{email}">
+            <div id="modEmailValidationMessage" class="message"></div>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="정보 수정 완료" class="button">
+            <a href="/user/userCheck" class="abutton" style="background-color:#C8C8C8;">돌아가기</a>
+        </div>
+        <input type="hidden" th:field="*{gender}">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="/js/userModify.js"></script>
+</body>
+
+</html>

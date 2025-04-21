@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>글 수정</title>
+    <link rel="icon" href="/img/doro.ico">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
+    <link rel="stylesheet" th:href="@{/css/modifyForm.css}">
+</head>
+
+<body>
+    <div layout:fragment="mainContent" class="container">
+        <h1>글 수정</h1>
+        <form id="boardModifyForm" action="/board/modify" method="post" th:object="${board}" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{bno}" />
+            <div class="form-group">
+                <label>제목:</label>
+                <input type="text" id="modBoardTitle" th:field="*{title}" placeholder="제목 입력">
+            </div>
+            <div class="form-group">
+                <label>내용:</label>
+                <textarea id="modBoardContent" th:field="*{content}" placeholder="내용 입력"></textarea>
+            </div>
+            <!-- 작성자 정보 (읽기 전용) -->
+            <div class="form-group">
+                <label>작성자:</label>
+                <input type="text" th:value="${board.writer}" readonly>
+            </div>
+            <br>
+            <div class="form-group" style="margin-top: 20px;">
+                <input type="submit" value="수정 완료" class="button">
+            </div>
+        </form>
+        <a href="/board/list" class="button">목록으로 돌아가기</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="/js/userRegister.js"></script>
+</body>
+
+</html>

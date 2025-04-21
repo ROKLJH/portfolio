@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel="icon" href="/img/doro.ico">
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>OurNotion 회원가입</h1>
+        <form id="registerForm" action="/user/userRegister" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>아이디 확인</label>
+                <input type="text" id="userId" name="id" placeholder="아이디 입력">
+                <div id="idValidationMessage" class="message"></div>
+                <input type="button" id="idCheckBtn" name="id_check" value="아이디 확인">
+                <div id="idDuplicateMessage" class="message"></div>
+            </div>
+
+            <div class="form-group">
+                <label>비밀번호</label>
+                <input type="password" id="pwd" name="pwd">
+                <div id="pwdValidationMessage" class="message"></div>
+            </div>
+            <div class="form-group">
+                <label>비밀번호 확인</label>
+                <input type="password" id="pwd2" name="pwd2">
+                <div id="pwdMatchMessage" class="message"></div>
+            </div>
+
+            <div class="form-group">
+                <label>생년월일</label>
+                <input type="text" id="birth" name="birth" placeholder="19950304의 형식">
+                <div id="birthValidationMessage" class="message"></div>
+            </div>
+            <div class="form-group">
+                <label>휴대전화</label>
+                <input type="text" id="telNum" name="telNum">
+                <div id="telValidationMessage" class="message"></div>
+            </div>
+            <div class="form-group">
+                <label>이메일</label>
+                <input type="email" id="email" name="email" placeholder="email@gmail.com">
+                <div id="emailValidationMessage" class="message"></div>
+            </div>
+
+            <div class="form-group">
+                <label>성별</label>
+                <label for="man">남자</label>
+                <input type="radio" name="gender" id="man" value="1">
+                <label for="woman">여자</label>
+                <input type="radio" name="gender" id="woman" value="2">
+            </div>
+            <div class="form-group">
+                <label>이름</label>
+                <input type="text" id="name" name="name" placeholder="이름 입력">
+                <div id="nameValidationMessage" class="message"></div>
+            </div>
+
+            <div class="form-group">
+                <label>사원번호</label>
+                <input type="text" name="deptSeq" placeholder="소속된 부서코드">
+            </div>
+            <input type="hidden" name="isSocial" value="0">
+
+            <!-- 프로필 사진 업로드 -->
+            <div class="form-group">
+                <label>프로필 사진</label>
+                <!-- 파일 input의 name을 profileFile로 하여 UserVO의 profile과 충돌 방지 -->
+                <input type="file" id="profilePic" name="profileFile" accept="image/png, image/jpeg, image/jpg, image/webp, image/bmp">
+                <div class="uploadResult">
+                    <ul id="profilePreview">
+                        <!-- 선택된 프로필 사진 미리보기 및 cancel 아이콘이 표시됨 -->
+                    </ul>
+                </div>
+            </div>
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="/js/userRegister.js"></script>
+</body>
+
+</html>
