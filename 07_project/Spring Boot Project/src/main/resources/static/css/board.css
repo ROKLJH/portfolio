@@ -1,0 +1,136 @@
+/* 공통 폰트 및 배경 설정 */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* 컨테이너: 중앙 정렬된 흰색 박스 */
+.container {
+    background-color: #ffffff;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #222;
+    text-align: center;
+}
+
+/* 테이블 스타일 (목록 페이지 전용) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+table th {
+    background-color: #eaeaea;
+    font-weight: bold;
+}
+
+/* 버튼 스타일*/
+a.button,
+button.button,
+input.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #cccccc;
+    color: #333;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+a.button:hover,
+button.button:hover,
+input.button:hover {
+    background-color: #aaaaaa;
+}
+
+/* 폼 요소 기본 스타일 */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+}
+
+/* 제출 버튼 스타일 */
+input[type="submit"] {
+    background-color: #999999;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+input[type="submit"]:hover {
+    background-color: #777777;
+}
+
+/* 업로드 결과 목록 (첨부파일, 프로필 미리보기 등) */
+.uploadResult ul,
+#profilePreview,
+#existingFileList,
+#newFileList {
+    list-style: none;
+    padding: 0;
+}
+.uploadResult ul li,
+#profilePreview li,
+#existingFileList li,
+#newFileList li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #eaeaea;
+    padding: 5px 8px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+/* cancel 아이콘 스타일 */
+.cancel-icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+/* 유효성 메시지 */
+.message {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+.red {
+    color: #d9534f;
+}
+.blue {
+    color: #5bc0de;
+}

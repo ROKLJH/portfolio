@@ -1,0 +1,10 @@
+input[readonly] {
+    background-color: #f7f7f7;
+}
+.cancel-icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: 5px;
+}

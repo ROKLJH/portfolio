@@ -1,0 +1,49 @@
+<!-- 사이드바 프래그먼트 정의 -->
+<div th:fragment="sidebarFragment">
+    <!-- 왼쪽 사이드바 영역 -->
+    <div class="leftSideBarOpen">
+        <!-- 사용자 프로필 이미지 영역 -->
+        <div class="userProfile">
+            <img th:src="${session.loginUser != null and session.loginUser.profile != null ? session.loginUser.profile : '/img/default_profile.png'}" th:alt="${session.loginUser != null ? session.loginUser.name : 'userProfile'}" width="30" height="30">
+        </div>
+
+        <div class="userName">
+            <h6 th:text="${session.loginUser != null ? session.loginUser.name : '회원이름'}"></h6>
+        </div>
+
+        <div class="buttonLeft">
+            <input type="button" value="<<" onclick="leftSideBarClose()" name="leftSidebarClose" />
+        </div>
+
+        <div class="mainMenu">
+            <p>검색</p>
+            <p>홈</p>
+        </div>
+
+        <div class="userMenu">
+            <p>캘린더</p>
+            <p><a th:href="@{/board/list}" style="text-decoration:none; color:inherit;">메모</a></p>
+            <p>가계부</p>
+        </div>
+
+        <div class="userSettings">
+            <p><a th:href="@{/user/userCheck}" style="text-decoration:none; color:inherit;">정보수정</a></p>
+        </div>
+
+        <div class="userLogOut">
+            <!-- 로그아웃 링크 추가: 클릭 시 /user/logout 경로로 이동 -->
+            <p><a th:href="@{/user/logout}" style="text-decoration:none; color:inherit;">로그아웃</a></p>
+        </div>
+    </div>
+    <div class="leftSidebarButton">
+        <input type="button" value=">>" onclick="leftSideBarOpen()" name="leftVisible" />
+    </div>
+
+    <div class="rightSideBarOpen">
+        <input type="button" value=">>" onclick="rightSideBarClose()" name="rightSidebarClose" />
+    </div>
+
+    <div class="rightSidebarButton">
+        <input type="button" value="<<" onclick="rightSideBarOpen()" name="rightVisible" />
+    </div>
+</div>

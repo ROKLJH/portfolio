@@ -1,0 +1,105 @@
+/* 기본 스타일 */
+body {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #f5f5f5; /* 배경을 밝은 아이보리로 변경 */
+    color: #333; /* 글자 색을 어두운 색으로 변경 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 컨테이너 스타일 */
+.container {
+    width: 90%;
+    max-width: 900px;
+    background-color: #fff; /* 컨테이너 배경을 흰색으로 변경 */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* 그림자 색을 어두운 색으로 변경 */
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f1f1f1; /* 헤더 배경을 밝은 아이보리로 변경 */
+    color: #333; /* 텍스트 색을 어두운 색으로 변경 */
+}
+
+td {
+    background-color: #fafafa; /* 셀 배경을 연한 아이보리로 변경 */
+}
+
+/* 입력 필드 스타일 */
+input, select {
+    width: 90%;
+    padding: 8px;
+    background: #f0f0f0; /* 입력 필드 배경을 밝은 색으로 변경 */
+    border: 1px solid #ddd; /* 테두리 색을 연한 색으로 변경 */
+    color: #333; /* 텍스트 색을 어두운 색으로 변경 */
+    border-radius: 5px;
+}
+
+input::placeholder {
+    color: #888; /* 플레이스홀더 색을 연한 회색으로 변경 */
+}
+
+/* 버튼 스타일 */
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.save-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.add-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+/* 액션 컬럼 넓이 조정 */
+th:nth-child(7), td:nth-child(7) {
+    width: 160px;
+    min-width: 160px;
+}
+
+/* 버튼 그룹 컨테이너 */
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0;
+}
+
+/* 버튼 기본 스타일 */
+.button-group button {
+    margin: 0;
+    white-space: nowrap;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
