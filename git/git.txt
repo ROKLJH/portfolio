@@ -42,7 +42,6 @@ Git-Hub
 	git remote -v				(master)
 	git push origin master			(master)
 
-
 개인 저장소 흐름
 	git init
 	git checkout -b [작업할 브랜치명]
