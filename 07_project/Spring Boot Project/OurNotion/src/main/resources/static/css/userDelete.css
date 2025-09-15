@@ -1,0 +1,10 @@
+/* 페이지 전용 추가 스타일 */
+.container {
+    text-align: center;
+}
+.btn-danger {
+    background-color: #d9534f;
+}
+.btn-secondary {
+    background-color: #5bc0de;
+}

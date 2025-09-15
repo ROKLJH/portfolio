@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Mapper의 namespace는 인터페이스와 일치 -->
+<mapper namespace="com.KoreaItAcdemy.OurNotion.mapper.BoardMapper">
+
+    <!-- 검색 조건 SQL 조각 (제목, 내용, 작성자 검색) -->
+    <sql id="criteria">
+        <if test="type != null and keyword != null and keyword != ''">
+            <trim prefix="AND ">
+                <choose>
+                    <!-- 강제 문자열 비교: (type + '') -->
+                    <when test="type=='T'.toString()">
+                        BoardName LIKE '%' || #{keyword} || '%'
+                    </when>
+                    <when test="type=='C'.toString()">
+                        content LIKE '%' || #{keyword} || '%'
+                    </when>
+                    <when test="type=='W'.toString()">
+                        writer LIKE '%' || #{keyword} || '%'
+                    </when>
+                </choose>
+            </trim>
+        </if>
+    </sql>
+
+    <!-- INSERT: 기본 게시글 추가 -->
+    <insert id="insert" parameterType="boardVO">
+        <![CDATA[
+        INSERT INTO T_board(BoardName, content, writer)
+        VALUES(#{title}, #{content}, #{writer})
+        ]]>
+    </insert>
+
+    <!-- INSERT SelectKey: 채번을 통한 게시글 추가
+         BoardSeq는 시퀀스 NEXT_BNO 사용하며,
+         나머지 컬럼은 BoardVO의 프로퍼티에 매핑됨.
+         참고: BoardVO에서는 title → boardName 등으로 필드명이 변경되어 있어야 함 -->
+    <insert id="insertSelectKey" parameterType="boardVO">
+        <selectKey keyProperty="bno" order="BEFORE" resultType="long">
+            <![CDATA[
+            SELECT board_seq.NEXTVAL FROM DUAL
+        ]]>
+        </selectKey>
+        <![CDATA[
+        INSERT INTO T_board(BoardSeq, BoardName, content, writer)
+        VALUES(#{bno}, #{title}, #{content}, #{writer})
+    ]]>
+    </insert>
+
+
+    <!-- 기본 목록 조회: 전체 게시글 -->
+    <select id="getList" resultType="boardVO">
+        <![CDATA[
+            SELECT BoardSeq AS bno, BoardName AS title, content, writer,
+                   FirstDateTime AS regdate, LastDateTime AS updatedate
+            FROM T_board
+            WHERE BoardSeq > 0
+        ]]>
+    </select>
+
+    <!-- 부서별 조회: T_USER 테이블에서 해당 부서(DeptSeq)의 사용자 ID를 가진 게시글 조회 -->
+    <select id="getListByDept" resultType="boardVO">
+        <![CDATA[
+            SELECT BoardSeq AS bno, BoardName AS title, content, writer,
+                   FirstDateTime AS regdate, LastDateTime AS updatedate
+            FROM T_board
+            WHERE writer IN (
+                SELECT id FROM T_USER WHERE DeptSeq = #{deptSeq}
+            )
+            ORDER BY BoardSeq DESC
+        ]]>
+    </select>
+
+    <!-- 부서별 + 검색 조건 조회 -->
+    <select id="getListWithKey" resultType="boardVO">
+        <![CDATA[
+            SELECT BoardSeq AS bno, BoardName AS title, content, writer,
+                   FirstDateTime AS regdate, LastDateTime AS updatedate
+            FROM T_board
+            WHERE writer IN (
+                SELECT id FROM T_USER WHERE DeptSeq = #{deptSeq}
+            )
+        ]]>
+        <include refid="criteria"/>
+    </select>
+
+    <!-- 게시글 조회 (단일 게시글) -->
+    <select id="get" resultType="boardVO">
+        <![CDATA[
+            SELECT BoardSeq AS bno, BoardName AS title, content, writer,
+                   FirstDateTime AS regdate, LastDateTime AS updatedate
+            FROM T_board
+            WHERE BoardSeq = #{bno}
+        ]]>
+    </select>
+
+    <!-- 게시글 업데이트
+         - BoardName은 제목을, LastDateTime은 수정일을 의미함. -->
+    <update id="update" parameterType="boardVO">
+        <![CDATA[
+            UPDATE T_board
+            SET BoardName = #{title},
+                content = #{content, jdbcType=VARCHAR},
+                writer = #{writer, jdbcType=VARCHAR},
+                LastDateTime = SYSDATE
+            WHERE BoardSeq = #{bno}
+        ]]>
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="delete">
+        <![CDATA[
+            DELETE FROM T_board
+            WHERE BoardSeq = #{bno}
+        ]]>
+    </delete>
+
+    <!-- 회원 탈퇴 시 해당 회원의 게시글 삭제 -->
+    <delete id="deleteByWriter">
+        <![CDATA[
+            DELETE FROM T_board
+            WHERE writer = #{writer}
+        ]]>
+    </delete>
+
+    <!-- 추가: 특정 작성자의 게시물 번호 목록 조회 -->
+    <select id="getBoardSeqListByWriter" resultType="long">
+        <![CDATA[
+            SELECT BoardSeq FROM T_board WHERE writer = #{writer}
+        ]]>
+    </select>
+</mapper>

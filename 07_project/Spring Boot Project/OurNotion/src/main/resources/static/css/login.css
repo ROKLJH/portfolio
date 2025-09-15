@@ -1,0 +1,8 @@
+.kakao-login-btn {
+    display: block;
+    margin: 20px auto;       /* 상하 여백 및 중앙 정렬 */
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
