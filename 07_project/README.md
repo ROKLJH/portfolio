@@ -137,6 +137,3 @@
 \- \*\*기술 확장\*\*: JDBC, MyBatis, JPA 모두 경험하며 DB 접근 방식 비교·습득  
 
 \- \*\*외부 연동 경험\*\*: Jsoup 크롤링, JavaMail, SMS API, Kakao API, 파일 업로드  
-
-
-
