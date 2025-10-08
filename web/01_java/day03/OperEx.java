@@ -57,6 +57,17 @@ public class OperEx {
 	 // 8. 비교연산
         int a1 = 10, a2 = 5;
         u.p("8. a1 == a2 : " + (a1==a2));
+
+        // 9. 논리연산
+        u.p("9. true && false : " + (true && false));  // 둘 다
+        u.p("9. true || false : " + (true || false));  // 둘 중 하나만
+        u.p("9. true ^ false : " + (true ^ false));  // 두 개가 달라야
+
+        // c1 = 10, c2 = 7, c3 = 50일 때
+        // c1 > c2 > c3가 맞는지 결과를 출력하시오.
+        // A) c1 > c2 && c2 > c3
+        int c1 = 10, c2 = 7, c3 = 50;
+        u.p("c1 > c2 > c3 : " + ((c1>c2) && (c2>c3)));
     }
 
 }
