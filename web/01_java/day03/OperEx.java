@@ -54,7 +54,7 @@ public class OperEx {
         int myAge = 900;
         u.p("내 이름은 " + myName + "이고, 내 나이는 " + myAge + "입니다.");
 
-	 // 8. 비교연산
+        // 8. 비교연산
         int a1 = 10, a2 = 5;
         u.p("8. a1 == a2 : " + (a1==a2));
 
@@ -68,6 +68,18 @@ public class OperEx {
         // A) c1 > c2 && c2 > c3
         int c1 = 10, c2 = 7, c3 = 50;
         u.p("c1 > c2 > c3 : " + ((c1>c2) && (c2>c3)));
+
+        // 10. 삼항연산
+        int score = 70;
+        String dad1 = score>60? "잘했어" : "#$#$@#%#%";
+        String dad2 = score>99? "당연" : "그것도 점수냐";
+        u.p("10. dad1 = " + dad1);
+        u.p("10. dad2 = " + dad2);
+
+        String host1 = (score>30)? "맥주":"야 그냥 귀국해";
+        u.p("10. host1 = " + host1);
+
+        // (score>30)? u.p("맥주") : u.p("야 그냥 귀국해");
     }
 
 }
