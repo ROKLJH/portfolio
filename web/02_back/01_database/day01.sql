@@ -1,0 +1,1 @@
+SELECT "한글은?" from dual;
