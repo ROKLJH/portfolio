@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title>Table Span</title>
+    <style>
+        td {
+            width: 200px;
+            background-color: violet;
+            font-size: 32px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        th {
+            background-color: purple;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Table Rowspan, Colspan</h1>
+    <hr>
+    <table border="3">
+        <tr>
+            <th colspan="2">head1</th>
+            <th>head2</th>
+        </tr>
+        <tr>
+            <td>data1</td>
+            <td>data2</td>
+            <td rowspan="2">data3</td>
+        </tr>
+        <tr>
+            <td>food1</td>
+            <td rowspan="100">food2</td> <!-- 맨 마지막 줄의 rowspan은 수고하셨습니다 -->
+            <td>food3</td>
+        </tr>
+        <caption> <!-- caption : 테이블 제목, 무조건 상단 출력 -->
+            <h3>이것도 되냐?</h3>
+            <hr>
+            <strong>Rowspan, Colspan</strong><br>
+            죽도록 해보십시오.
+        </caption>
+    </table>
+</body>
+</html>
